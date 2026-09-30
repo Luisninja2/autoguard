@@ -1,0 +1,14 @@
+check_interval: 30
+log_file: autoguard.log
+
+notifications:
+  discord_webhook_url: ""
+
+services:
+  - name: nginx
+    type: systemd
+    unit: nginx.service
+
+  - name: meu-container
+    type: docker
+    container_name: meu-container
