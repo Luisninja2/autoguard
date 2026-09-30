@@ -1,4 +1,4 @@
-## 🛡️ AutoGuard — Watchdog de Serviços com Auto-Recuperação
+# 🛡️ AutoGuard — Watchdog de Serviços com Auto-Recuperação
 
 AutoGuard é um watchdog leve em Python que monitora serviços críticos (via **systemd** ou **Docker**), detecta falhas e **reinicia automaticamente**, enviando notificações em tempo real para o Discord.
 
@@ -8,15 +8,18 @@ Em ambientes de infraestrutura, um serviço parado às 3h da manhã pode gerar h
 
 ## ⚙️ Arquitetura
 
-```mermaid
-flowchart LR
-    A[AutoGuard Loop] -->|verifica| B(Serviço systemd)
-    A -->|verifica| C(Container Docker)
-    B -- caiu --> D[Restart systemctl]
-    C -- caiu --> E[Restart docker]
-    D --> F[Notificação Discord]
-    E --> F
-    A --> G[Log rotativo em arquivo]
+```text
++------------------+         +-------------------+
+|  AutoGuard Loop  | ------> |  Serviço systemd  |
++------------------+         +-------------------+
+         |                             | (caiu)
+         |                             v
+         |                   [ Restart systemctl ]
+         |                             |
+         v                             v
++------------------+         +-------------------+
+| Container Docker | ------> |  Alerta Discord   |
++------------------+         +-------------------+
 git clone https://github.com/Luisninja2/ll.git
 cd ll
 pip install -r requirements.txt
@@ -29,6 +32,6 @@ sudo cp systemd/autoguard.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now autoguard
 
-3. Clique no botão verde **"Commit changes..."** lá no canto superior direito (no seu print dá pra ver ele verdinho ali).
+4. Clique no botão verde **"Commit changes..."** para salvar.
 
-Depois disso, o seu repositório já vai ficar com a documentação bonitona na página principal! Me avisa quando clicar em commit!
+A caixinha vermelha vai sumir na hora e o desenho da arquitetura vai aparecer limpo e legível! Me avisa quando salvar!
