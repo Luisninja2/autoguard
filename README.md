@@ -32,6 +32,6 @@ sudo cp systemd/autoguard.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now autoguard
 
-4. Clique no botão verde **"Commit changes..."** para salvar.
+3. Clique em **"Commit changes..."**.
 
-A caixinha vermelha vai sumir na hora e o desenho da arquitetura vai aparecer limpo e legível! Me avisa quando salvar!
+Assim que salvar, os tópicos *"Funcionalidades"*, *"Como usar"* e *"Segurança"* vão aparecer destacados com títulos grandes e botões de copiar código!
