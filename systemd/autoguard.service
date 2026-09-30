@@ -1,0 +1,14 @@
+[Unit]
+Description=AutoGuard - Watchdog de Servicos
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/autoguard
+ExecStart=/usr/bin/python3 /opt/autoguard/autoguard.py -c /opt/autoguard/config.yaml
+Environment=AUTOGUARD_WEBHOOK_URL=coloque_sua_url_aqui
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
